@@ -1,0 +1,34 @@
+name: my_meltano_project
+version: "1.0"
+require-dbt-version: [">=1.0.0", "<2.0.0"]
+profile: meltano
+config-version: 2
+model-paths:
+  - models
+analysis-paths:
+  - analysis
+test-paths:
+  - tests
+seed-paths:
+  - data
+macro-paths:
+  - macros
+snapshot-paths:
+  - snapshots
+log-path: logs
+packages-install-path: dbt_packages
+clean-targets:
+  - ../.meltano/transformers/dbt/target
+  - dbt_packages
+  - logs
+models:
+  my_meltano_project: null
+  elementary:
+    +meta:
+      schema_name: "matatika_test_results"
+on-run-end:
+  - "{{ centralize_test_failures(results) }}"
+tests:
+  +schema: matatika_test_results
+vars:
+  tests_schema: matatika_test_results
