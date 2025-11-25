@@ -10,6 +10,9 @@ plugins:
   - name: tap-googleads
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-googleads.git@v0.8.0
+  - name: tap-facebook
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/tap-facebook.git
   loaders:
   - name: target-bigquery
     variant: matatika
