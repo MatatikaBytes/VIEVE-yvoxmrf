@@ -1,0 +1,11 @@
+version: pipelines/v0.1
+name: Model Lineage
+data_components:
+- dbt
+- utilities/dbt-artifacts--matatika
+- utilities/matatika--matatika
+actions:
+- dbt:deps
+- dbt:docs-generate
+- dbt-artifacts:convert-matatika
+- matatika:publish
