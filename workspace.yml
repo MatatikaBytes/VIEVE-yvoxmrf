@@ -3,8 +3,10 @@ name: VIEVE
 domains:
 - day1data.co.uk
 - day1data.co.uk
-- "vieve.com, "
-- "vieve.com, "
+- day1data.co.uk
+- vieve.com
+- vieve.com
+- vieve.com
 app_properties:
   WELCOME_DATASET_ALIAS: welcome
 default_data_store: Warehouse
