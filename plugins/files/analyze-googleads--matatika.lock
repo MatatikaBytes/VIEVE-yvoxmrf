@@ -1,0 +1,21 @@
+{
+  "plugin_type": "files",
+  "name": "analyze-googleads",
+  "namespace": "tap_googleads",
+  "variant": "matatika",
+  "label": "Google Ads Insights",
+  "repo": "https://github.com/Matatika/analyze-googleads",
+  "pip_url": "git+https://github.com/Matatika/analyze-googleads@v0.5.0",
+  "description": "Instant insights on campaigns, devices, costs, and clicks from Google Ads.",
+  "requires": {
+    "transforms": [
+      {
+        "name": "dbt-googleads",
+        "variant": "matatika"
+      }
+    ]
+  },
+  "update": {
+    "*.yml": "true"
+  }
+}

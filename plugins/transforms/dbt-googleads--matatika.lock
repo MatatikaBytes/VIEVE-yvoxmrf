@@ -1,0 +1,27 @@
+{
+  "plugin_type": "transforms",
+  "name": "dbt-googleads",
+  "namespace": "tap_googleads",
+  "variant": "matatika",
+  "label": "dbt-googleads",
+  "repo": "https://github.com/Matatika/dbt-tap-googleads",
+  "pip_url": "https://github.com/Matatika/dbt-tap-googleads@v0.5.0",
+  "description": " Google Ads is an online advertising platform that allows businesses to create and display ads to potential customers.\nMatatika extract the data from the Google Ads API and creates out of the box insights including:\n\n***Google Ads campaigns***\n- Campaign Name\n- Campaign Status\n- Total Cost\n- Average CPC per Day\n- Total Clicks\n- Total Impressions\n- Popularity\n\n***Google Ads click locations***\nAnswer questions such as *What are my top 10 locations by clicks across all my campaigns?*\n\n***Google Ads campaign clicks***\nAnswer questions such as *How many clicks have all my campaigns had over the last 30 days?*\n\n",
+  "requires": {
+    "extractors": [
+      {
+        "name": "tap-googleads",
+        "variant": "matatika"
+      }
+    ],
+    "transformers": [
+      {
+        "name": "dbt",
+        "variant": "dbt-labs"
+      }
+    ]
+  },
+  "vars": {
+    "schema": "{{ env_var('DBT_SOURCE_SCHEMA') }}"
+  }
+}
