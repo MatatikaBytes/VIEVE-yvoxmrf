@@ -1,0 +1,309 @@
+{
+  "plugin_type": "loaders",
+  "name": "target-bigquery",
+  "namespace": "bigquery",
+  "variant": "matatika",
+  "label": "Google BigQuery",
+  "docs": "https://www.matatika.com/data-details/target-bigquery/",
+  "repo": "https://github.com/Matatika/target-bigquery",
+  "pip_url": "git+https://github.com/Matatika/target-bigquery.git@v1.0",
+  "executable": "target-bigquery",
+  "description": "Google BigQuery is a cloud-based data warehousing and analytics platform. \n\nGoogle BigQuery allows users to store, manage, and analyze large datasets using SQL-like queries. It is designed to handle petabyte-scale datasets and can be integrated with other Google Cloud Platform services. BigQuery also offers real-time data streaming and machine learning capabilities, making it a powerful tool for data-driven decision making. Its serverless architecture means that users only pay for the queries they run, making it a cost-effective solution for businesses of all sizes.",
+  "logo_url": "/assets/logos/loaders/bigquery.png",
+  "capabilities": [
+    "about",
+    "stream-maps",
+    "schema-flattening"
+  ],
+  "settings": [
+    {
+      "name": "credentials_json",
+      "kind": "string",
+      "label": "Service Account Key (json)",
+      "description": "The Google Service Account Key JSON object with access to the BigQuery API.",
+      "hidden": false,
+      "sensitive": true,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "project",
+      "kind": "string",
+      "label": "Project",
+      "description": "The ID of the Google Cloud project that contains the BigQuery dataset to connect to.",
+      "hidden": false,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "dataset",
+      "kind": "string",
+      "label": "Dataset",
+      "description": "The name of the BigQuery dataset to connect to.",
+      "hidden": false,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "location",
+      "kind": "string",
+      "label": "Location",
+      "description": "The geographic location of the BigQuery dataset.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "batch_size",
+      "kind": "integer",
+      "value": 10000,
+      "label": "Batch Size",
+      "description": "The number of rows to retrieve per API request.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "fail_fast",
+      "kind": "boolean",
+      "label": "Fail Fast",
+      "description": "Whether to stop processing if an error occurs during data retrieval.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "timeout",
+      "kind": "integer",
+      "label": "Timeout",
+      "description": "The maximum amount of time to wait for a response from the API.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "denormalized",
+      "kind": "boolean",
+      "value": true,
+      "label": "Denormalized",
+      "description": "Whether to flatten nested data structures in the BigQuery table.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "method",
+      "kind": "options",
+      "value": "batch_job",
+      "label": "Method",
+      "description": "The HTTP method to use for API requests.",
+      "options": [
+        {
+          "label": "Storage Write API",
+          "value": "storage_write_api"
+        },
+        {
+          "label": "Batch Job",
+          "value": "batch_job"
+        },
+        {
+          "label": "Gcs Stage",
+          "value": "gcs_stage"
+        },
+        {
+          "label": "Streaming Insert",
+          "value": "streaming_insert"
+        }
+      ],
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "generate_view",
+      "kind": "boolean",
+      "label": "Generate View",
+      "description": "Whether to create a BigQuery view based on the query results.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "bucket",
+      "kind": "string",
+      "label": "Bucket",
+      "description": "The name of the Google Cloud Storage bucket to write query results to.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "partition_granularity",
+      "kind": "options",
+      "label": "Partition Granularity",
+      "description": "The level of granularity to use when partitioning query results.",
+      "options": [
+        {
+          "label": "Year",
+          "value": "year"
+        },
+        {
+          "label": "Month",
+          "value": "month"
+        },
+        {
+          "label": "Day",
+          "value": "day"
+        },
+        {
+          "label": "Hour",
+          "value": "hour"
+        }
+      ],
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "cluster_on_key_properties",
+      "kind": "boolean",
+      "label": "Cluster On Key Properties",
+      "description": "Whether to cluster query results based on key properties.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "column_name_transforms.lower",
+      "kind": "boolean",
+      "label": "Column Name Transforms Lower",
+      "description": "Whether to convert column names to lowercase.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "column_name_transforms.quote",
+      "kind": "boolean",
+      "label": "Column Name Transforms Quote",
+      "description": "Whether to quote column names.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "column_name_transforms.add_underscore_when_invalid",
+      "kind": "boolean",
+      "label": "Column Name Transforms Add Underscore When Invalid",
+      "description": "Whether to add an underscore to column names that are invalid.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "column_name_transforms.snake_case",
+      "kind": "boolean",
+      "value": true,
+      "label": "Column Name Transforms Snake Case",
+      "description": "Whether to convert column names to snake case.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "options.storage_write_batch_mode",
+      "kind": "boolean",
+      "label": "Options Storage Write Batch Mode",
+      "description": "The batch mode to use when writing query results to Google Cloud Storage.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "options.process_pool",
+      "kind": "boolean",
+      "label": "Options Process Pool",
+      "description": "The number of worker processes to use for parallel processing.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "options.max_workers",
+      "kind": "integer",
+      "label": "Options Max Workers",
+      "description": "The maximum number of worker processes to use for parallel processing.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "upsert",
+      "kind": "boolean",
+      "value": true,
+      "label": "Upsert",
+      "description": "Whether to update existing rows in the destination table if they match the incoming data.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "overwrite",
+      "kind": "boolean",
+      "label": "Overwrite",
+      "description": "Whether to overwrite existing rows in the destination table with the incoming data.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "dedupe_before_upsert",
+      "kind": "boolean",
+      "label": "Dedupe Before Upsert",
+      "description": "Whether to remove duplicate rows from the incoming data before performing an upsert operation.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "stream_maps",
+      "kind": "object",
+      "label": "Stream Maps",
+      "description": "The mapping of source columns to destination columns for streaming data.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "stream_map_config",
+      "kind": "object",
+      "label": "Stream Map Config",
+      "description": "The configuration for the stream mapping.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "flattening_enabled",
+      "kind": "boolean",
+      "value": true,
+      "label": "Flattening Enabled",
+      "description": "Whether to flatten nested data structures in the query results.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "flattening_max_depth",
+      "kind": "integer",
+      "value": 10,
+      "label": "Flattening Max Depth",
+      "description": "The maximum depth of nested data structures to flatten in the query results.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    }
+  ]
+}

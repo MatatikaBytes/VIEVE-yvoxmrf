@@ -1,0 +1,114 @@
+{
+  "plugin_type": "transformers",
+  "name": "dbt",
+  "namespace": "dbt",
+  "variant": "dbt-labs",
+  "label": "dbt",
+  "docs": "https://www.matatika.com/data-details/dbt/",
+  "repo": "https://github.com/dbt-labs/dbt-core",
+  "pip_url": "dbt-core~=1.7.0 dbt-postgres~=1.7.0 dbt-snowflake~=1.7.0 dbt-bigquery~=1.7.0 certifi==2025.1.31",
+  "description": " Power your project transformations with dbt\u2122, a SQL-first transformation tool that enables analytics engineers to develop transformations with code.\n\n***Version Control and CI/CD***\n\nUse Matatika to deploy and promote changes between dev, UAT, and production environments.\n\n***Test and Document***\n\nUse Matatika to develop and test every model prior to production release, and share dynamically generated documentation with all stakeholders.\n\n***Develop***\n\nWrite modular data transformations in .sql \u2013 Matatika together with dbt handles the chore of dependency management. ",
+  "logo_url": "/assets/images/transformer/dbt.png",
+  "settings": [
+    {
+      "name": "project_dir",
+      "kind": "string",
+      "value": "$MELTANO_PROJECT_ROOT/transform",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "profiles_dir",
+      "env": "DBT_PROFILES_DIR",
+      "kind": "string",
+      "value": "$MELTANO_PROJECT_ROOT/transform/profile",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "target",
+      "kind": "string",
+      "value": "$MELTANO_LOAD__DIALECT",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "source_schema",
+      "kind": "string",
+      "value": "$MELTANO_LOAD__TARGET_SCHEMA",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "target_schema",
+      "kind": "string",
+      "value": "analytics",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "target_path",
+      "kind": "string",
+      "value": "$MELTANO_PROJECT_ROOT/.meltano/transformers/dbt/target",
+      "description": "Output path for dbt generated artifacts",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "models",
+      "kind": "string",
+      "value": "$MELTANO_TRANSFORM__PACKAGE_NAME $MELTANO_EXTRACTOR_NAMESPACE my_meltano_project",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    }
+  ],
+  "commands": {
+    "compile": {
+      "args": "compile",
+      "description": "Generates executable SQL from source model, test, and analysis files. Compiled SQL files are written to the target/ directory."
+    },
+    "seed": {
+      "args": "seed",
+      "description": "Load data from csv files into your data warehouse."
+    },
+    "test": {
+      "args": "test",
+      "description": "Runs tests on data in deployed models."
+    },
+    "docs-generate": {
+      "args": "docs generate",
+      "description": "Generate documentation artifacts for your project."
+    },
+    "deps": {
+      "args": "deps",
+      "description": "Pull the most recent version of the dependencies listed in packages.yml"
+    },
+    "run": {
+      "args": "run",
+      "description": "Compile SQL and execute against the current target database."
+    },
+    "clean": {
+      "args": "clean",
+      "description": "Delete all folders in the clean-targets list (usually the dbt_modules and target directories.)"
+    },
+    "snapshot": {
+      "args": "snapshot",
+      "description": "Execute snapshots defined in your project."
+    }
+  },
+  "requires": {
+    "files": [
+      {
+        "name": "files-dbt",
+        "variant": "matatika"
+      }
+    ]
+  }
+}
