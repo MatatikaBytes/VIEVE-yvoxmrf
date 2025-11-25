@@ -1,0 +1,78 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-facebook-systemtoken",
+  "namespace": "tap_facebook",
+  "variant": "matatika",
+  "label": "Facebook Ads (System Access Token)",
+  "docs": "https://www.matatika.com/data-details/tap-facebook/",
+  "repo": "https://github.com/Matatika/tap-facebook",
+  "pip_url": "git+https://github.com/Matatika/tap-facebook.git",
+  "description": "Facebook Ads is a platform for creating and running advertisements on Facebook and its affiliated platforms.\n\nFacebook Ads allows businesses and individuals to create and run targeted advertisements on Facebook, Instagram, Messenger, and other affiliated platforms. Advertisers can choose from a variety of ad formats, including image, video, carousel, and slideshow ads, and can target their ads based on factors such as demographics, interests, behaviors, and location. Facebook Ads also provides tools for tracking ad performance and optimizing campaigns for better results. With over 2 billion active users on Facebook alone, Facebook Ads offers a powerful way for businesses to reach and engage with their target audience.\n### Prerequisites\nTo obtain the Account ID for connecting to Facebook Ads, you can follow these steps:\n\n1. Log in to your Facebook Ads account.\n2. Click on the gear icon in the top right corner and select \"Account Settings\".\n3. Your Account ID will be listed at the top of the page.\n\nTo obtain the System Access Token for connecting to Facebook Ads, you can follow these steps:\n\n1. Log in to your Facebook Developer account.\n2. Create a new app or select an existing one.\n3. Log in to your Facebook for Business account\n4. Go to Settings -> Accounts -> Apps -> Add -> Connect an App.\n5. Go to System Users and add a new system user -> Generate token.\n\nTo obtain the Start Date for connecting to Facebook Ads, you will need to determine the date from which you want to start retrieving data. This will depend on your specific use case and reporting needs.",
+  "logo_url": "/assets/logos/extractors/facebook.png",
+  "capabilities": [
+    "discover",
+    "catalog",
+    "state"
+  ],
+  "settings": [
+    {
+      "name": "account_ids",
+      "kind": "array",
+      "label": "Account IDs",
+      "description": "The unique identifiers for the Facebook Ads accounts being connected.",
+      "placeholder": "Ex. 123456789012345",
+      "hidden": false,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "access_token",
+      "kind": "string",
+      "label": "Access Token",
+      "description": "A token that grants access to the Facebook Ads API.",
+      "placeholder": "Ex. *****************",
+      "hidden": false,
+      "sensitive": true,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "start_date",
+      "kind": "date_iso8601",
+      "label": "Start Date",
+      "description": "The date from which to start retrieving data.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "end_date",
+      "kind": "date_iso8601",
+      "label": "End Date",
+      "description": "The date until which to retrieve data.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "api_version",
+      "kind": "string",
+      "value": "v23.0",
+      "label": "API Version",
+      "description": "The version of API to use.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "insight_reports_list",
+      "kind": "array",
+      "label": "Custom Insight Reports",
+      "description": "List of custom insight reports.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    }
+  ]
+}
