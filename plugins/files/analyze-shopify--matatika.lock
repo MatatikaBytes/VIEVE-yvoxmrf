@@ -1,0 +1,21 @@
+{
+  "plugin_type": "files",
+  "name": "analyze-shopify",
+  "namespace": "tap_shopify",
+  "variant": "matatika",
+  "label": "Shopify Insights",
+  "repo": "https://github.com/Matatika/analyze-shopify",
+  "pip_url": "git+https://github.com/Matatika/analyze-shopify@v0.1.0",
+  "description": "Instant insights on orders from Shopify.",
+  "requires": {
+    "extractors": [
+      {
+        "name": "tap-shopify",
+        "variant": "matatika"
+      }
+    ]
+  },
+  "update": {
+    "*.yml": "true"
+  }
+}

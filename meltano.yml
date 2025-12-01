@@ -42,6 +42,9 @@ plugins:
   - name: analyze-googleads
     variant: matatika
     pip_url: git+https://github.com/Matatika/analyze-googleads@v0.5.0
+  - name: analyze-shopify
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/analyze-shopify@v0.1.0
   utilities:
   - name: matatika
     variant: matatika
