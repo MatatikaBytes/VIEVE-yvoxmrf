@@ -1,9 +1,9 @@
 version: pipelines/v0.1
-label: Shopify
-name: shopify
+label: Google Ads
+name: google-ads
 timeout: 0
 max_retries: 0
 data_components:
-- tap-shopify
+- tap-googleads
 - Warehouse
 - dbt

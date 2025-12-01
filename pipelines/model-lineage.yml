@@ -1,0 +1,14 @@
+version: pipelines/v0.1
+label: Model Lineage
+name: model-lineage
+timeout: 0
+max_retries: 0
+data_components:
+- dbt
+- dbt-artifacts
+- matatika
+actions:
+- dbt:deps
+- dbt:docs-generate
+- dbt-artifacts:convert-matatika
+- matatika:publish
