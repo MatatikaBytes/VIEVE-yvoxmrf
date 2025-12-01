@@ -1,5 +1,6 @@
 version: pipelines/v0.1
-name: Facebook Ads
+label: Facebook Ads
+name: facebook-ads
 timeout: 0
 max_retries: 0
 data_components:

@@ -1,5 +1,6 @@
 version: pipelines/v0.1
-name: Model Lineage
+label: Model Lineage
+name: model-lineage
 timeout: 0
 max_retries: 0
 data_components:
