@@ -1,0 +1,48 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-shopify",
+  "namespace": "tap_shopify",
+  "variant": "matatika",
+  "label": "Shopify",
+  "docs": "https://www.matatika.com/docs/instant-insights/tap-shopify/",
+  "repo": "https://github.com/Matatika/tap-shopify",
+  "pip_url": "git+https://github.com/Matatika/tap-shopify@v0.3.2",
+  "description": "Shopify is an e-commerce platform that allows businesses to create and manage their online stores, sell products, and handle payments and shipping.\n\nShopify is a cloud-based e-commerce platform that provides businesses with the tools they need to create and manage their online stores. With Shopify, businesses can easily set up an online store, customize the design and layout, add products, and manage inventory. The platform also includes features for handling payments, shipping, and taxes, as well as tools for marketing and analytics. Shopify is designed to be user-friendly and accessible to businesses of all sizes, from small startups to large enterprises. It offers a range of pricing plans to suit different needs and budgets, and provides 24/7 customer support to help businesses get the most out of the platform.\n### Prerequisites\nTo obtain an Access Token for Shopify, you need to follow these steps:\n\n1. Log in to your Shopify account.\n2. Click on the Apps tab on the left-hand side of the screen.\n3. Click on the Manage private apps link at the bottom of the page.\n4. Click on the Create a new private app button.\n5. Enter a name for your private app and provide an email address for the developer.\n6. Under the Admin API section, select the areas of your store that you want the app to have access to.\n7. Click on the Save button to create the private app.\n8. On the next screen, you will see the API key and password for your private app. Use these to generate an Access Token.\n\nTo obtain the Store URL for Shopify, you need to follow these steps:\n\n1. Log in to your Shopify account.\n2. Click on the Online Store tab on the left-hand side of the screen.\n3. Click on the Domains link at the top of the page.\n4. Your store URL will be displayed under the Primary domain section.",
+  "logo_url": "/assets/images/datasource/tap-shopify.png",
+  "capabilities": [
+    "state",
+    "catalog",
+    "discover"
+  ],
+  "settings": [
+    {
+      "name": "access_token",
+      "kind": "string",
+      "label": "Access Token",
+      "description": "A unique code that allows an application to access a Shopify store's data.",
+      "hidden": false,
+      "sensitive": true,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "store",
+      "kind": "string",
+      "label": "Store",
+      "description": "The name or URL of the Shopify store that the application will connect to.",
+      "hidden": false,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "start_date",
+      "kind": "date_iso8601",
+      "label": "Start Date",
+      "description": "The date from which the application will start retrieving data from the Shopify store.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    }
+  ]
+}

@@ -16,6 +16,9 @@ plugins:
   - name: tap-facebook-systemtoken
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-facebook.git
+  - name: tap-shopify
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/tap-shopify@v0.3.2
   loaders:
   - name: target-bigquery
     variant: matatika
