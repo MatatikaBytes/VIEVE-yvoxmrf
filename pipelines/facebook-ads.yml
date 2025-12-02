@@ -5,4 +5,4 @@ timeout: 0
 max_retries: 0
 data_components:
 - tap-facebook
-- target-bigquery
+- Google BigQuery
