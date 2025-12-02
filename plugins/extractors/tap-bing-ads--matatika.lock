@@ -1,0 +1,159 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-bing-ads",
+  "namespace": "tap_bing_ads",
+  "variant": "matatika",
+  "label": "Bing Ads",
+  "docs": "https://www.matatika.com/data-details/tap-bing-ads/",
+  "repo": "https://github.com/Matatika/tap-bing-ads-msdk",
+  "pip_url": "git+https://github.com/Matatika/tap-bing-ads-msdk.git",
+  "description": "Bing Ads is a pay-per-click advertising platform that allows businesses to display their ads on Bing and Yahoo search engines.\n\nBing Ads is a powerful advertising tool that enables businesses to reach their target audience through pay-per-click advertising on Bing and Yahoo search engines. With Bing Ads, businesses can create and manage their ad campaigns, set their budget, and track their performance. The platform offers a range of targeting options, including location, device, and demographics, to ensure that ads are shown to the right people at the right time. Bing Ads also provides detailed analytics and reporting, allowing businesses to measure the success of their campaigns and make data-driven decisions to optimize their advertising strategy.",
+  "logo_url": "/assets/logos/extractors/bing-ads.png",
+  "capabilities": [
+    "state",
+    "catalog",
+    "discover"
+  ],
+  "settings": [
+    {
+      "name": "oauth_credentials.authorization_url",
+      "kind": "string",
+      "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "label": "OAuth identity provider authorization endpoint used create and refresh tokens",
+      "description": "The endpoint used to create and refresh OAuth tokens.",
+      "hidden": true,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.scope",
+      "kind": "string",
+      "value": "openid offline_access https://ads.microsoft.com/msads.manage",
+      "label": "OAuth scopes we need to request access to",
+      "description": "The specific permissions for which we are requesting user consent.",
+      "hidden": true,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.access_token",
+      "kind": "string",
+      "label": "Access Token",
+      "description": "The token used to authenticate and authorize API requests.",
+      "hidden": true,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.refresh_token",
+      "kind": "string",
+      "label": "OAuth Refresh Token",
+      "description": "The token used to refresh the access token when it expires.",
+      "hidden": true,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.refresh_proxy_url",
+      "kind": "string",
+      "label": "Optional - will be called with 'oauth_credentials.refresh_token' to refresh the access token",
+      "description": "An optional function that will be called to refresh the access token using the refresh token.",
+      "hidden": true,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.refresh_proxy_url_auth",
+      "kind": "string",
+      "label": "Optional - Sets Authorization header on 'oauth_credentials.refresh_url' request",
+      "description": "An optional setting that sets the Authorization header on the request to refresh the access token.",
+      "hidden": true,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "client_id",
+      "kind": "string",
+      "label": "OAuth Client ID",
+      "description": "The OAuth Client ID for client credentials token creation, only used if an oauth2 refresh proxy refresh URL is not supplied.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "client_secret",
+      "kind": "string",
+      "label": "OAuth Client Secret",
+      "description": "The OAuth Client Secret for client credentials token creation, only used if an oauth2 refresh proxy refresh URL is not supplied.",
+      "hidden": false,
+      "sensitive": true,
+      "protected": false
+    },
+    {
+      "name": "refresh_token",
+      "aliases": [
+        "oauth_credentials.refresh_token"
+      ],
+      "kind": "string",
+      "label": "OAuth Refresh Token",
+      "description": "The token refreshed by client id and secret authentication method.",
+      "hidden": true,
+      "sensitive": false,
+      "required": "false",
+      "protected": false
+    },
+    {
+      "name": "developer_token",
+      "kind": "string",
+      "value": "14515136CC007198",
+      "label": "Developer Token",
+      "description": "A unique identifier for the developer accessing the Bing Ads API.",
+      "hidden": true,
+      "sensitive": true,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "customer_id",
+      "kind": "string",
+      "label": "Customer ID",
+      "description": "A unique identifier for the Bing Ads customer account (see cid= in url).",
+      "hidden": false,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "account_ids",
+      "kind": "string",
+      "label": "Account ID(s)",
+      "description": "A list of unique identifiers for the Bing Ads account(s) associated with the customer account  (see aid= in url).",
+      "hidden": false,
+      "sensitive": false,
+      "required": "false",
+      "protected": false
+    },
+    {
+      "name": "start_date",
+      "kind": "date_iso8601",
+      "label": "Start Date",
+      "description": "The date from which to retrieve data from the Bing Ads API.",
+      "hidden": false,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "stream_maps",
+      "kind": "object",
+      "description": "Config object for stream maps capability. For more information check out [Stream Maps](https://sdk.meltano.com/en/latest/stream_maps.html).",
+      "hidden": true,
+      "sensitive": false,
+      "protected": false
+    }
+  ]
+}

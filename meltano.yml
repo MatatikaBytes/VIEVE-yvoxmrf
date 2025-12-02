@@ -19,6 +19,9 @@ plugins:
   - name: tap-shopify
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-shopify@v0.3.2
+  - name: tap-bing-ads
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/tap-bing-ads-msdk.git
   loaders:
   - name: target-bigquery
     variant: matatika
