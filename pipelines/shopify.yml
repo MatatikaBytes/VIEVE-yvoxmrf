@@ -1,6 +1,5 @@
 version: pipelines/v0.1
 label: Shopify
-name: shopify
 timeout: 0
 max_retries: 0
 data_components:

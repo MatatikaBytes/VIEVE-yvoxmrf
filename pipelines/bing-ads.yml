@@ -1,6 +1,5 @@
 version: pipelines/v0.1
 label: Bing Ads
-name: bing-ads
 timeout: 0
 max_retries: 0
 data_components:
