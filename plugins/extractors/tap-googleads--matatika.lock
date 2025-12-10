@@ -131,6 +131,15 @@
       "sensitive": false,
       "required": "true",
       "protected": false
+    },
+    {
+      "name": "login_customer_id",
+      "kind": "string",
+      "label": "Login Customer Id",
+      "description": "The ID of the Google Ads account to authenticate the api requests with.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
     }
   ]
 }
