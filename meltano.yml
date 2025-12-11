@@ -10,6 +10,18 @@ plugins:
   - name: tap-googleads
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-googleads.git@v0.8.0
+    select:
+    - '*.*'
+    - '!stream_geo_target_constant.*'
+    - '!stream_campaign.*'
+    - '!stream_adgroups.*'
+    - '!stream_adgroupsperformance.*'
+    - '!stream_campaign_performance.*'
+    - '!stream_campaign_performance_by_age_range_and_device.*'
+    - '!stream_campaign_performance_by_gender_and_device.*'
+    - '!stream_campaign_performance_by_location.*'
+    - '!stream_geo_performance.*'
+    - '!stream_accessible_customers.*'
   - name: tap-facebook
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-facebook.git
