@@ -1,0 +1,38 @@
+plugins:
+  extractors:
+  - name: tap-googleads
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/tap-googleads.git@v0.11.0
+    select:
+    - campaign_history.*
+    - adgroups.*
+    - ad_group_ad.*
+    - customer.*
+    - label.*
+    - keyword_view.*
+    - video.*
+    - ad_performance.*
+    config:
+      start_date: 2025-12-01
+      custom_queries:
+      - name: "ad_group_stats"
+        query: >
+          SELECT
+            ad_group.resource_name,
+            ad_group.id,
+            metrics.impressions,
+            metrics.clicks,
+            metrics.cost_micros,
+            metrics.conversions,
+            metrics.engagements,
+            metrics.interactions,
+            metrics.video_trueview_views,
+            metrics.conversions_value,
+            metrics.all_conversions,
+            metrics.all_conversions_value,
+            segments.date,
+            segments.device
+          FROM ad_group
+        add_date_filter_to_query: true
+        replication_key: "segments__date"
+        replication_method: "INCREMENTAL"
