@@ -13,6 +13,8 @@ plugins:
     - video.*
     - ad_performance.*
     - ad_group_stats.*
+    - keyword_stats.*
+    - campaign_stats.*
     config:
       start_date: 2025-12-01
       custom_queries:
@@ -34,6 +36,40 @@ plugins:
             segments.date,
             segments.device
           FROM ad_group
+        add_date_filter_to_query: true
+        replication_key: "segments__date"
+        replication_method: "INCREMENTAL"
+      - name: "keyword_stats"
+        query: >
+          SELECT
+            segments.date,
+            segments.device,
+            customer.id,
+            campaign.id,
+            metrics.cost_micros,
+            metrics.impressions,
+            metrics.clicks,
+            metrics.conversions,
+            metrics.conversions_value,
+            ad_group.id,
+            ad_group_criterion.criterion_id
+          FROM keyword_view
+        add_date_filter_to_query: true
+        replication_key: "segments__date"
+        replication_method: "INCREMENTAL"
+      - name: "campaign_stats"
+        query: >
+          SELECT
+            segments.date,
+            segments.device,
+            campaign.id,
+            customer.id,
+            metrics.impressions,
+            metrics.clicks,
+            metrics.cost_micros,
+            metrics.conversions,
+            metrics.conversions_value
+          FROM campaign
         add_date_filter_to_query: true
         replication_key: "segments__date"
         replication_method: "INCREMENTAL"
