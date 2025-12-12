@@ -133,10 +133,38 @@
       "protected": false
     },
     {
+      "name": "customer_ids",
+      "kind": "array",
+      "label": "Customer IDs",
+      "description": "Get data for the provided customers only, rather than all accessible customers. Takes precedence over `customer_id`.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
       "name": "login_customer_id",
       "kind": "string",
       "label": "Login Customer Id",
       "description": "The ID of the Google Ads account to authenticate the api requests with.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "enable_click_view_report_stream",
+      "kind": "boolean",
+      "value": true,
+      "label": "Enable Click View Report Stream",
+      "description": "Enable syncing of data from the Click View Report.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "custom_queries",
+      "kind": "array",
+      "label": "Custom Queries",
+      "description": "Queries required to generate custom streams.",
       "hidden": false,
       "sensitive": false,
       "protected": false
