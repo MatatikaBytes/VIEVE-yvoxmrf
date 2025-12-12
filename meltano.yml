@@ -9,7 +9,7 @@ plugins:
   extractors:
   - name: tap-googleads
     variant: matatika
-    pip_url: git+https://github.com/Matatika/tap-googleads.git@v0.8.0
+    pip_url: git+https://github.com/Matatika/tap-googleads.git@v0.11.0
     select:
     - '*.*'
     - '!stream_geo_target_constant.*'
