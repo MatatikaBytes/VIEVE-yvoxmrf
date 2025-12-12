@@ -12,6 +12,7 @@ plugins:
     - keyword_view.*
     - video.*
     - ad_performance.*
+    - ad_group_stats.*
     config:
       start_date: 2025-12-01
       custom_queries:
