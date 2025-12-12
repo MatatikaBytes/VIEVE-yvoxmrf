@@ -8,6 +8,7 @@ environments:
 include_paths:
 - project/extractors/*.meltano.yml
 plugins:
+  extractors:
   - name: tap-facebook
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-facebook.git
