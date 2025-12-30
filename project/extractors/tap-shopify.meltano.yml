@@ -1,0 +1,12 @@
+plugins:
+  extractors:
+  - name: tap-shopify
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/tap-shopify
+    select:
+    - orders.*
+    - line_items.*
+    - shipping_lines.*
+    - refunds.*
+    - refund_line_items.*
+    - order_adjustments.*
