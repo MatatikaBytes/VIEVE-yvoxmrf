@@ -1,6 +1,6 @@
 version: pipelines/v0.1
 label: Shopify
-timeout: 3600
+timeout: 36000
 max_retries: 0
 data_components:
 - tap-shopify
