@@ -10,3 +10,4 @@ plugins:
     - refunds.*
     - refund_line_items.*
     - order_adjustments.*
+    - products.*
