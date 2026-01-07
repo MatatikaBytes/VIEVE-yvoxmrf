@@ -23,6 +23,8 @@ plugins:
           SELECT
             ad_group.resource_name,
             ad_group.id,
+            campaign.id,
+            customer.id,
             metrics.impressions,
             metrics.clicks,
             metrics.cost_micros,
