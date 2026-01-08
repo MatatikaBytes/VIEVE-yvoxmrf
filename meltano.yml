@@ -22,10 +22,6 @@ plugins:
   - name: target-postgres
     variant: matatika
     pip_url: git+https://github.com/Matatika/pipelinewise-target-postgres@v0.2.0
-  transforms:
-  - name: dbt-googleads
-    variant: matatika
-    pip_url: https://github.com/Matatika/dbt-tap-googleads@v0.5.0
   transformers:
   - name: dbt
     variant: dbt-labs

@@ -3,8 +3,6 @@ label: Google Ads
 schedule: 0 0 0 * * *
 timeout: 0
 max_retries: 2
-script: meltano run --state-id-suffix "$PIPELINE_ID" tap-googleads target-bigquery dbt:deps dbt:run --select vieve.google_ads
-data_components:
+script: meltano run --state-id-suffix "$PIPELINE_ID" tap-googleads target-bigquery
 - tap-googleads
 - Google BigQuery
-- dbt
