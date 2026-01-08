@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: google_ads
+    schema: matatika_google_ads
+    description: Source tables from tap-google-ads
+    tables:
+      - name: adgroups
+      - name: ad_group_stats
+      - name: ad_group_criterion
+      - name: campaign_history
+      - name: campaign_stats
+      - name: customer
+      - name: keyword_stats
+  - name: shopify
+    schema: matatika_shopify
+    description: Source tables from tap-shopify
+    tables:
+      - name: line_items
+      - name: orders
+      - name: order_adjustments
+      - name: products
+      - name: refund_line_items
+      - name: refunds
+      - name: shipping_lines
+      - name: tax_lines
+      - name: dim_postcode_uk
