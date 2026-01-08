@@ -12,9 +12,6 @@ plugins:
   - name: tap-facebook
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-facebook.git
-  - name: tap-facebook-systemtoken
-    variant: matatika
-    pip_url: git+https://github.com/Matatika/tap-facebook.git
   - name: tap-bing-ads
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-bing-ads-msdk.git

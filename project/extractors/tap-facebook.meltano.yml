@@ -1,0 +1,11 @@
+plugins:
+  extractors:
+  - name: tap-facebook-systemtoken
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/tap-facebook.git
+    select:
+      - adaccounts.*
+      - ads.*
+      - adsets.*
+      - campaigns.*
+      
