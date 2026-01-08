@@ -1,7 +1,0 @@
-version: pipelines/v0.1
-label: Facebook Ads
-timeout: 0
-max_retries: 0
-data_components:
-- tap-facebook
-- Google BigQuery
