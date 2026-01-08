@@ -6,6 +6,5 @@ plugins:
     select:
       - adaccounts.*
       - ads.*
-      - adsets.*
       - campaigns.*
       
