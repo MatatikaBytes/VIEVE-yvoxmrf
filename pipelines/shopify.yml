@@ -1,7 +1,9 @@
 version: pipelines/v0.1
 label: Shopify
 timeout: 36000
-max_retries: 0
+max_retries: 2
+script: meltano run --state-id-suffix "$PIPELINE_ID" tap-shopify target-bigquery dbt:deps dbt:run
 data_components:
 - tap-shopify
 - Google BigQuery
+- dbt

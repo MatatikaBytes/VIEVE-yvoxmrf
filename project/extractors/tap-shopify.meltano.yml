@@ -2,7 +2,7 @@ plugins:
   extractors:
   - name: tap-shopify
     variant: matatika
-    pip_url: git+https://github.com/Matatika/tap-shopify
+    pip_url: git+https://github.com/Matatika/tap-shopify.git
     select:
     - orders.*
     - line_items.*
