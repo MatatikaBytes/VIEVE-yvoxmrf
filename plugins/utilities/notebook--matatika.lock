@@ -1,0 +1,59 @@
+{
+  "plugin_type": "utilities",
+  "name": "notebook",
+  "namespace": "utility_notebook",
+  "variant": "matatika",
+  "label": "Notebook",
+  "docs": "https://www.matatika.com/data-details/notebook/",
+  "pip_url": "git+https://github.com/Matatika/utility-notebook.git",
+  "description": "Notebook is a term that can refer to various things, such as a physical notebook or a software application for taking notes or organizing information.\n### Prerequisites\n- Path: The path to your notebook file\n- Format: Desired format to convert your notebook into. Currently supported: pdf\n- Config: Any configuration to use during your notebook conversion.",
+  "logo_url": "https://app.matatika.com/assets/images/utility/notebook.png",
+  "settings": [
+    {
+      "name": "path",
+      "kind": "string",
+      "label": "Path",
+      "description": "The file path or URL to the Notebook.",
+      "hidden": false,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "format",
+      "kind": "string",
+      "label": "Format",
+      "description": "The format of the Notebook file, such as 'ipynb' for Jupyter Notebooks.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "config",
+      "kind": "string",
+      "label": "Config",
+      "description": "The configuration settings for connecting to the Notebook, such as authentication credentials.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    }
+  ],
+  "commands": {
+    "run-convert-config": {
+      "args": "run $NOTEBOOK_PATH -f $NOTEBOOK_FORMAT -c $NOTEBOOK_CONFIG",
+      "description": "Run and convert one/many notebooks to a selected format with a config."
+    },
+    "run": {
+      "args": "run $NOTEBOOK_PATH",
+      "description": "Run one/many notebooks, saving their executed state."
+    },
+    "convert": {
+      "args": "convert $NOTEBOOK_PATH -f $NOTEBOOK_FORMAT",
+      "description": "Convert one/many notebooks to a selected format."
+    },
+    "run-convert": {
+      "args": "run $NOTEBOOK_PATH -f $NOTEBOOK_FORMAT",
+      "description": "Run and convert one/many notebooks to a selected format."
+    }
+  }
+}

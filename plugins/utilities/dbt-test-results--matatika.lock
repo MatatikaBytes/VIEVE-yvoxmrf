@@ -1,0 +1,38 @@
+{
+  "plugin_type": "utilities",
+  "name": "dbt-test-results",
+  "namespace": "dbt-test-results",
+  "variant": "matatika",
+  "label": "dbt Test Results",
+  "pip_url": "git+https://github.com/Matatika/prototype-dbt-test-results-ext@v0.0.1",
+  "executable": "dbt-artifacts_extension",
+  "description": "A tool for processing [dbt artifacts](https://docs.getdbt.com/reference/artifacts/dbt-artifacts).",
+  "settings": [
+    {
+      "name": "output_dir",
+      "kind": "string",
+      "value": "output",
+      "label": "Output directory",
+      "description": "Target directory output.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "source_dir",
+      "kind": "string",
+      "value": ".meltano/transformers/dbt/target",
+      "label": "Source directory",
+      "description": "Source directory for the dbt manifest.json and catalog.json to get your lineage from.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    }
+  ],
+  "commands": {
+    "convert": {
+      "args": "convert --format matatika",
+      "description": "Convert artifacts to Matatika datasets."
+    }
+  }
+}
