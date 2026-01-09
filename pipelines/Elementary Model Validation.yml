@@ -50,6 +50,7 @@ data_components:
 - elementary
 - notebook
 - sendgrid
+- Google BigQuery
 properties:
   notebook.path: notebook/data_quality_report.ipynb
   sendgrid.body: email_template.html
