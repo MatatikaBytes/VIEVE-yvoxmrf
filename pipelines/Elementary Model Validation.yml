@@ -1,5 +1,5 @@
 version: pipelines/v0.1
-name: Elementary Model Validation
+label: Elementary Model Validation
 schedule: 0 0 12 * * *
 timeout: 1800
 max_retries: 0
