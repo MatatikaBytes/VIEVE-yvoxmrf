@@ -7,3 +7,4 @@ script: meltano run --state-id-suffix "$PIPELINE_ID" tap-facebook-systemtoken ta
 data_components:
 - tap-facebook-systemtoken
 - Google BigQuery
+- dbt
