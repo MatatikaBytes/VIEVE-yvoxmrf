@@ -1,0 +1,51 @@
+{
+  "plugin_type": "files",
+  "name": "app-elementary",
+  "namespace": "elementary",
+  "variant": "matatika",
+  "label": "Elementary App",
+  "repo": "https://github.com/Matatika/app-elementary.git",
+  "pip_url": "git+https://github.com/Matatika/app-elementary@v0.3.0",
+  "description": "App Elementary, everything you need to get elementary up and running in your Matatika workspace.",
+  "logo_url": "/assets/images/utility/elementary.png",
+  "requires": {
+    "transforms": [
+      {
+        "name": "dbt-elementary",
+        "variant": "matatika"
+      }
+    ],
+    "utilities": [
+      {
+        "name": "matatika",
+        "variant": "matatika"
+      },
+      {
+        "name": "dbt-test-results",
+        "variant": "matatika"
+      },
+      {
+        "name": "notebook",
+        "variant": "matatika"
+      },
+      {
+        "name": "sendgrid",
+        "variant": "matatika"
+      },
+      {
+        "name": "elementary",
+        "variant": "matatika"
+      }
+    ]
+  },
+  "update": {
+    "analyze/datasets/elementary/dashboard/bars/*.yml": "true",
+    "workspace.yml": "true",
+    "analyze/channels/*.yml": "true",
+    "analyze/datasets/elementary/dashboard/metrics/*.yml": "true",
+    "analyze/datasets/elementary/*.yml": "true",
+    "analyze/datasets/elementary/dashboard/lines/*.yml": "true",
+    "analyze/datasets/elementary/dashboard/test-results-overview/*.yml": "true",
+    "analyze/datasets/elementary/dashboard/doughnuts/*.yml": "true"
+  }
+}

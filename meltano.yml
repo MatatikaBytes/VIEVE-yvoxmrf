@@ -41,6 +41,9 @@ plugins:
   - name: analyze-shopify
     variant: matatika
     pip_url: git+https://github.com/Matatika/analyze-shopify@v0.1.0
+  - name: app-elementary
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/app-elementary@v0.3.0
   utilities:
   - name: matatika
     variant: matatika
@@ -50,8 +53,7 @@ plugins:
     pip_url: git+https://github.com/Matatika/dbt-artifacts-ext.git
   - name: dbt-test-results
     variant: matatika
-    pip_url: 
-      git+https://github.com/Matatika/prototype-dbt-test-results-ext@v0.0.1
+    pip_url: git+https://github.com/Matatika/prototype-dbt-test-results-ext@v0.0.1
   - name: notebook
     variant: matatika
     pip_url: git+https://github.com/Matatika/utility-notebook.git
