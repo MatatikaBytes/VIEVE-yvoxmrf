@@ -8,7 +8,12 @@ ASSUMPTION:
 -
 */
 
-{{ config(materialized='table') }}
+{{ 
+    config(
+        materialized='table',
+        schema = 'matatika_shopify_marts'  
+    ) 
+}}
 
 WITH email_table AS (
     

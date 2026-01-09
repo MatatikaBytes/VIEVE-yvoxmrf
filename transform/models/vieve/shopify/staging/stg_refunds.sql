@@ -11,10 +11,12 @@ EXTRA NOTES
 - the original exchanged order date is included for returns might not be fit for purpose
 */
 
-
-
-{{ config(materialized='table') }}
-
+{{ 
+    config(
+        materialized='table',
+        schema = 'matatika_shopify_staging'  
+    ) 
+}}
 -- Grouping by refund id getting the order details
 WITH refund_orderline AS 
 (

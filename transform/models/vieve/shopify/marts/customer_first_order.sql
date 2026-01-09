@@ -7,7 +7,12 @@ ASSUMPTION:
 -
 */
 
-{{ config(materialized='table') }}
+{{ 
+    config(
+        materialized='table',
+        schema = 'matatika_shopify_marts'  
+    ) 
+}}
 
 SELECT
     id as order_id

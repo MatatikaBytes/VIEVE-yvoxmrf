@@ -1,6 +1,7 @@
 {{ config(
     materialized = 'table',
-    description = 'Retail calendar based on client-provided week start dates'
+    description = 'Retail calendar based on client-provided week start dates',
+    schema = 'helper_tables'  
 ) }}
 
 -- Step 1: Create a CTE with the client's provided week start dates

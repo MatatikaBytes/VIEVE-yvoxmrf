@@ -11,8 +11,12 @@ ASSUMPTION:
 -
 */
 
-{{ config(materialized='table') }}
-
+{{ 
+    config(
+        materialized='table',
+        schema = 'matatika_shopify_marts'  
+    ) 
+}}
 -- using cleaned order table that handles exchanged orders
 
 WITH order_line_agg AS (
@@ -239,7 +243,7 @@ joined_data AS (
         d.day_name
         -- Add any other retail calendar fields you need
     FROM shopify_metrics
-    LEFT JOIN {{ ref('dim_retail_calendar_shopify') }} d ON shopify_metrics.fulldate = d.calendar_date
+    LEFT JOIN {{ ref('retail_calendar') }} d ON shopify_metrics.fulldate = d.calendar_date
 )
 -- Final output
 SELECT * FROM joined_data

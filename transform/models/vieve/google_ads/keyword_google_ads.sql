@@ -6,8 +6,12 @@ RESULT EXPECTATION:
 ASSUMPTION:
 -
 */
-{{ config(materialized='table') }}
-
+{{ 
+    config(
+        materialized='table',
+        schema = 'matatika_google_ads_staging'  
+    ) 
+}}
 -- Getting the campaign name from the history name
 WITH campaign_name_table AS (
   

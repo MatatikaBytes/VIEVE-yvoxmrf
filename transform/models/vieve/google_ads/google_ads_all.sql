@@ -1,4 +1,9 @@
-{{ config(materialized='table') }}
+{{ 
+    config(
+        materialized='table',
+        schema = 'matatika_google_ads_staging'  
+    ) 
+}}
 
 /*
 CONTEXT:
@@ -141,7 +146,7 @@ joined_data AS (
         -- Add any other retail calendar fields you need
     FROM 
         initial i
-    LEFT JOIN {{ ref('dim_retail_calendar') }} d  ON i.fulldate = d.calendar_date
+    LEFT JOIN {{ ref('retail_calendar') }} d  ON i.fulldate = d.calendar_date
 )
 -- Final output
 SELECT * FROM joined_data

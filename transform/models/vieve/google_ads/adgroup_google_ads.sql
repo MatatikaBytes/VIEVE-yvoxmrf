@@ -9,7 +9,8 @@ ASSUMPTION:
 
 {{ 
     config(
-        materialized='table'
+        materialized='table',
+        schema = 'matatika_google_ads_staging'  
     ) 
 }}
 

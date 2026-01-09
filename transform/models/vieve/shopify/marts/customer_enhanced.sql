@@ -91,7 +91,12 @@ DATA QUALITY NOTES:
 -- Identify unknown app_ids: 195233349633, 3890849, 5806573
 -- Separate TikTok from AfterShip Feed if needed for more granular analysis
 
-{{ config(materialized='table') }}
+{{ 
+    config(
+        materialized='table',
+        schema = 'matatika_shopify_marts'  
+    ) 
+}}
 
 WITH customer_orders AS (
     

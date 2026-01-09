@@ -7,7 +7,12 @@ RESULT EXPECTATION:
 ASSUMPTION:
 -
 */
-{{ config(materialized='table') }}
+{{ 
+    config(
+        materialized='table',
+        schema = 'matatika_shopify_staging'  
+    ) 
+}}
 
 WITH order_line_product AS (
 SELECT

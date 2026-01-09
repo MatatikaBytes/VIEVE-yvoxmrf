@@ -8,7 +8,12 @@ ASSUMPTION:
 -
 */
 
-{{ config(materialized='table') }}
+{{ 
+    config(
+        materialized='table',
+        schema = 'matatika_shopify_staging'  
+    ) 
+}}
 
 SELECT
 CAST(DATETIME(orders.created_at, "Europe/London") AS DATE) as order_date

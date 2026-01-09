@@ -1,4 +1,9 @@
-{{ config(materialized='table') }}
+{{ 
+    config(
+        materialized='table',
+        schema = 'matatika_google_ads_staging'  
+    ) 
+}}
 
 /*
 CONTEXT:

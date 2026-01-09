@@ -1,6 +1,10 @@
-{{ config(
-    materialized='table',
-) }}
+
+{{ 
+    config(
+        materialized='table',
+        schema = 'matatika_shopify_staging'  
+    ) 
+}}
 
 /*
 MODEL: stg_magento_orders_gbp_converted

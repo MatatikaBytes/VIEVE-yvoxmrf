@@ -1,4 +1,10 @@
-{{ config(materialized='table') }}
+
+{{ 
+    config(
+        materialized='table',
+        schema = 'matatika_shopify_staging'  
+    ) 
+}}
 
 WITH free_product AS (
     SELECT 
