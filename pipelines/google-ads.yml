@@ -6,7 +6,7 @@ max_retries: 2
 script: |-
   meltano run --state-id-suffix "$PIPELINE_ID" tap-googleads target-bigquery
   meltano invoke dbt deps
-  meltano invoke dbt run --select staging.google_ads.*
+  meltano invoke dbt run --select vieve.google_ads.*
 data_components:
 - tap-googleads
 - Google BigQuery
