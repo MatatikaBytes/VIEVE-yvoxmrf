@@ -1,0 +1,37 @@
+# This file is managed by the 'app-elementary' file bundle and updated automatically when `meltano upgrade` is run.
+# To prevent any manual changes from being overwritten, remove the file bundle from `meltano.yml` or disable automatic updates:
+#     meltano config --plugin-type=files app-elementary set _update analyze/datasets/elementary/dashboard/test-results-overview/dbt-tests-test-results.yml false
+
+version: datasets/v0.2
+title: dbt Test Results
+source: Test Results
+description: "#dashboard"
+metadata: |-
+  {
+    "name": "elementary_test_results",
+    "label": "dbt Test Results", 
+    "related_table": {
+      "columns": [
+        {"name": "TABLE_NAME", "label": "Table Name", "description": "Table Name"}, 
+        {"name": "COLUMN_NAME", "label": "Column Name", "description": "Column Name"},
+        {"name": "TEST_UNIQUE_ID", "label": "Test ID", "description": "Test ID", "post_process_expr": "value => `[${value}](/dataset/${value})`"},
+        {"name": "TEST_SUB_TYPE", "label": "Test Type", "description": "Test Type"}, 
+        {"name": "CREATED_AT", "label": "Last Test Run", "description": "Last Test Run"},
+        {"name": "STATUS", "label": "Last Status", "description": "Last Status"}
+      ]
+    }
+  }
+visualisation: '{"html-table": {}}'
+query: |-
+  SELECT 
+    TABLE_NAME "elementary_test_results.TABLE_NAME"
+    , COLUMN_NAME "elementary_test_results.COLUMN_NAME"
+    , TEST_UNIQUE_ID "elementary_test_results.TEST_UNIQUE_ID"
+    , TEST_SUB_TYPE "elementary_test_results.TEST_SUB_TYPE"
+    , CREATED_AT "elementary_test_results.CREATED_AT"
+    , STATUS "elementary_test_results.STATUS"
+  FROM MATATIKA_TEST_RESULTS.elementary_test_results
+  WHERE INVOCATION_ID = (SELECT INVOCATION_ID FROM MATATIKA_TEST_RESULTS.elementary_test_results 
+                        ORDER BY CREATED_AT DESC LIMIT 1)
+  AND TEST_TYPE LIKE '%dbt%'
+  ORDER BY "elementary_test_results.STATUS", "elementary_test_results.TABLE_NAME", "elementary_test_results.TEST_UNIQUE_ID"
