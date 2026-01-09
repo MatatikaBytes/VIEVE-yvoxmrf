@@ -62,4 +62,4 @@ plugins:
     pip_url: git+https://github.com/Matatika/utility-sendgrid.git
   - name: elementary
     variant: matatika
-    pip_url: elementary-data[postgres,snowflake]==0.12.0 git+https://github.com/matatika/elementary-ext.git
+    pip_url: elementary-data[postgres,snowflake,bigquery]==0.12.0 git+https://github.com/matatika/elementary-ext.git

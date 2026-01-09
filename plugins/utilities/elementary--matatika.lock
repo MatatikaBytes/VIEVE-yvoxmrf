@@ -5,7 +5,7 @@
   "variant": "matatika",
   "label": "Elementary",
   "repo": "https://github.com/elementary-data/elementary",
-  "pip_url": "elementary-data[postgres,snowflake]==0.12.0 git+https://github.com/matatika/elementary-ext.git",
+  "pip_url": "elementary-data[postgres,snowflake,bigquery]==0.12.0 git+https://github.com/matatika/elementary-ext.git",
   "executable": "edr",
   "description": "Elementary is an open-source data observability solution for data & analytics engineers.",
   "logo_url": "https://app.matatika.com/assets/logos/utilities/elementary.png",
