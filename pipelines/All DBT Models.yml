@@ -2,10 +2,10 @@ version: pipelines/v0.1
 label: All DBT Models
 schedule: 0 0 0 * * *
 timeout: 3600
+max_retries: 2
 data_components:
 - dbt
 - Google BigQuery
 actions:
-- dbt:deps # bring in the dbt dependencies we have for future model building
-- dbt:run # run all the models
-max_retries: 2
+- dbt:deps
+- dbt:run
