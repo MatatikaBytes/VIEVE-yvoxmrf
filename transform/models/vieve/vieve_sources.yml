@@ -7,32 +7,112 @@ sources:
     description: Source tables from tap-google-ads
     tables:
       - name: adgroups
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
       - name: ad_group_stats
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
       - name: ad_group_criterion
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
       - name: campaign_history
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
       - name: campaign_stats
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
       - name: customer
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
       - name: keyword_stats
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
   - name: shopify
     database: vieve-data
     schema: matatika_shopify
     description: Source tables from tap-shopify
     tables:
       - name: line_items
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
       - name: orders
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
       - name: order_adjustments
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
       - name: products
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
       - name: refund_line_items
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
       - name: refunds
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
       - name: shipping_lines
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
       - name: tax_lines
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
       - name: dim_postcode_uk
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
   - name: facebook_ads
     database: vieve-data
     schema: matatika_facebook_ads
     description: Source tables from tap-facebook-systemtoken
     tables:
       - name: adaccounts
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
       - name: ads
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
       - name: adsets
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
       - name: campaigns
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
