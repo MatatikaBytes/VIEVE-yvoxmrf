@@ -1,0 +1,7 @@
+# This file is managed by the 'app-elementary' file bundle and updated automatically when `meltano upgrade` is run.
+# To prevent any manual changes from being overwritten, remove the file bundle from `meltano.yml` or disable automatic updates:
+#     meltano config --plugin-type=files app-elementary set _update analyze/channels/Test Results.yml false
+
+version: channels/v0.1
+description: Test Results
+picture: /assets/images/files/app-elementary/test-results.png
