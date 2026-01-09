@@ -1,0 +1,46 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-csv",
+  "namespace": "tap_csv",
+  "variant": "meltanolabs",
+  "label": "Comma Separated Values (CSV)",
+  "docs": "https://www.matatika.com/data-details/tap-csv/",
+  "repo": "https://github.com/MeltanoLabs/tap-csv",
+  "pip_url": "git+https://github.com/MeltanoLabs/tap-csv.git",
+  "description": "Comma Separated Values (CSV) is a file format used to store and exchange data.\n\nCSV is a simple file format that stores data in a tabular form, with each row representing a record and each column representing a field. The values in each field are separated by commas, hence the name \"comma separated values.\" CSV files can be easily opened and edited in spreadsheet software like Microsoft Excel or Google Sheets, making them a popular choice for data exchange between different applications and systems. They are also commonly used for importing and exporting data from databases and other software tools.",
+  "logo_url": "/assets/logos/extractors/csv.png",
+  "capabilities": [
+    "catalog",
+    "discover"
+  ],
+  "settings": [
+    {
+      "name": "add_metadata_columns",
+      "kind": "boolean",
+      "label": "Add Metadata Columns",
+      "description": "Specifies whether to include metadata columns in the CSV output.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "csv_files_definition",
+      "kind": "string",
+      "label": "Csv Files Definition",
+      "description": "Defines the structure and location of the CSV files to be accessed through the API.",
+      "placeholder": "Ex. files-def.json",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "files",
+      "kind": "array",
+      "label": "Files",
+      "description": "Specifies the CSV files to be accessed through the API.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    }
+  ]
+}

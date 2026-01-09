@@ -15,6 +15,9 @@ plugins:
   - name: tap-bing-ads
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-bing-ads-msdk.git
+  - name: tap-csv
+    variant: meltanolabs
+    pip_url: git+https://github.com/MeltanoLabs/tap-csv.git
   loaders:
   - name: target-bigquery
     variant: matatika
