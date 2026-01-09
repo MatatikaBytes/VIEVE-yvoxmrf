@@ -39,13 +39,13 @@
     ]
   },
   "update": {
-    "analyze/datasets/elementary/dashboard/bars/*.yml": "true",
-    "workspace.yml": "true",
-    "analyze/channels/*.yml": "true",
-    "analyze/datasets/elementary/dashboard/metrics/*.yml": "true",
-    "analyze/datasets/elementary/*.yml": "true",
-    "analyze/datasets/elementary/dashboard/lines/*.yml": "true",
-    "analyze/datasets/elementary/dashboard/test-results-overview/*.yml": "true",
-    "analyze/datasets/elementary/dashboard/doughnuts/*.yml": "true"
+    "analyze/datasets/elementary/dashboard/bars/*.yml": "false",
+    "workspace.yml": "false",
+    "analyze/channels/*.yml": "false",
+    "analyze/datasets/elementary/dashboard/metrics/*.yml": "false",
+    "analyze/datasets/elementary/*.yml": "false",
+    "analyze/datasets/elementary/dashboard/lines/*.yml": "false",
+    "analyze/datasets/elementary/dashboard/test-results-overview/*.yml": "false",
+    "analyze/datasets/elementary/dashboard/doughnuts/*.yml": "false"
   }
 }
