@@ -51,3 +51,8 @@ data_components:
 - notebook
 - sendgrid
 - Google BigQuery
+properties:
+  notebook.path: notebook/data_quality_report.ipynb
+  sendgrid.body: email_template.html
+  sendgrid.title: VIEVE Daily Data Quality Report
+  sendgrid.content_type: text/html
