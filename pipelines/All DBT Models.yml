@@ -1,5 +1,5 @@
 version: pipelines/v0.1
-name: All DBT Models
+label: All DBT Models
 schedule: 0 0 0 * * *
 timeout: 3600
 data_components:
