@@ -1,0 +1,67 @@
+# This file is managed by the 'app-elementary' file bundle and updated automatically when `meltano upgrade` is run.
+# To prevent any manual changes from being overwritten, remove the file bundle from `meltano.yml` or disable automatic updates:
+#     meltano config --plugin-type=files app-elementary set _update analyze/datasets/elementary/export_new_failing_tests.yml false
+
+version: datasets/v0.2
+source: Test Results
+title: Export - New Data Quality Issues
+description: |-
+  New data quality issues.
+
+  ![Export](data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22109.908%22%20height%3D%22102.24%22%3E%3Cpath%20fill%3D%22%23185c37%22%20d%3D%22M63.21%2048.851l-34.762-6.134v45.327a3.748%203.748%200%20003.748%203.748h59.982a3.748%203.748%200%20003.748-3.748v-16.7z%22%2F%3E%3Cpath%20fill%3D%22%2321a366%22%20d%3D%22M63.21%2010H32.196a3.748%203.748%200%2000-3.748%203.748v16.7L63.21%2050.896l18.403%206.134%2014.313-6.134V30.448z%22%2F%3E%3Cpath%20fill%3D%22%23107c41%22%20d%3D%22M28.448%2030.448H63.21v20.448H28.448z%22%2F%3E%3Cpath%20opacity%3D%22.1%22%20d%3D%22M53.327%2026.358H28.448v51.12h24.88a3.76%203.76%200%20003.747-3.748V30.107a3.76%203.76%200%2000-3.748-3.749z%22%2F%3E%3Cpath%20opacity%3D%22.2%22%20d%3D%22M51.282%2028.403H28.448v51.12h22.834a3.76%203.76%200%20003.748-3.748V32.151a3.76%203.76%200%2000-3.748-3.748z%22%2F%3E%3Cpath%20opacity%3D%22.2%22%20d%3D%22M51.282%2028.403H28.448v47.03h22.834a3.76%203.76%200%20003.748-3.748V32.151a3.76%203.76%200%2000-3.748-3.748z%22%2F%3E%3Cpath%20opacity%3D%22.2%22%20d%3D%22M49.237%2028.403H28.448v47.03h20.79a3.76%203.76%200%20003.748-3.748V32.151a3.76%203.76%200%2000-3.749-3.748z%22%2F%3E%3ClinearGradient%20id%3D%22a%22%20gradientUnits%3D%22userSpaceOnUse%22%20x1%3D%22203.513%22%20y1%3D%221729.018%22%20x2%3D%22967.987%22%20y2%3D%22404.982%22%20gradientTransform%3D%22matrix(.0384%200%200%20-.0384%208%2091.869)%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2318884f%22%2F%3E%3Cstop%20offset%3D%22.5%22%20stop-color%3D%22%23117e43%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%230b6631%22%2F%3E%3C%2FlinearGradient%3E%3Cpath%20fill%3D%22url(%23a)%22%20d%3D%22M11.748%2028.403h37.49a3.748%203.748%200%20013.748%203.748v37.49a3.748%203.748%200%2001-3.749%203.748H11.748A3.748%203.748%200%20018%2069.64V32.15a3.748%203.748%200%20013.748-3.748z%22%2F%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M19.608%2063.079l7.885-12.218-7.224-12.15h5.811l3.942%207.77c.364.738.614%201.286.749%201.648h.051c.259-.589.532-1.16.818-1.715l4.214-7.699h5.335l-7.408%2012.079%207.596%2012.285h-5.676l-4.554-8.529a7.154%207.154%200%2001-.544-1.139h-.067c-.134.387-.31.757-.528%201.104L25.32%2063.08z%22%2F%3E%3Cpath%20fill%3D%22%2333c481%22%20d%3D%22M92.178%2010H63.21v20.448h32.716v-16.7A3.748%203.748%200%200092.178%2010z%22%2F%3E%3Cpath%20fill%3D%22%23107c41%22%20d%3D%22M63.21%2050.896h32.716v20.448H63.21z%22%2F%3E%3C%2Fsvg%3E)
+
+metadata:
+visualisation:
+query: |-
+  WITH latest_test_runs AS (
+    SELECT 
+      TEST_UNIQUE_ID
+      , TEST_NAME
+      , created_at as last_run_time
+      , status
+      , INVOCATION_ID
+    FROM MATATIKA_TEST_RESULTS.ELEMENTARY_TEST_RESULTS
+    WHERE INVOCATION_ID  = (SELECT INVOCATION_ID  FROM MATATIKA_TEST_RESULTS.ELEMENTARY_TEST_RESULTS
+    						ORDER BY CREATED_AT DESC LIMIT 1)
+  ),
+  latest_test_failures AS (
+    SELECT
+      TEST_UNIQUE_ID
+      , TEST_NAME
+      , last_run_time
+    FROM latest_test_runs
+    WHERE status = 'fail' OR status = 'error'
+  ),
+  previous_invocation_id AS (
+    SELECT
+      INVOCATION_ID
+    FROM MATATIKA_TEST_RESULTS.ELEMENTARY_TEST_RESULTS
+    WHERE INVOCATION_ID NOT IN (SELECT INVOCATION_ID FROM latest_test_runs)
+    ORDER BY CREATED_AT DESC LIMIT 1
+  ),
+  previous_test_runs AS (
+    SELECT
+      TEST_UNIQUE_ID AS previous_test_unique_id
+      , CREATED_AT AS previous_run
+      , STATUS AS previous_status
+    FROM MATATIKA_TEST_RESULTS.ELEMENTARY_TEST_RESULTS etr
+    WHERE TEST_UNIQUE_ID IN (SELECT TEST_UNIQUE_ID FROM latest_test_runs)
+    AND INVOCATION_ID = (SELECT INVOCATION_ID FROM previous_invocation_id)
+  ),
+  joined_test_runs AS (
+    SELECT
+      *
+    FROM latest_test_failures ltr
+    LEFT JOIN previous_test_runs ptr ON ptr.previous_test_unique_id = ltr.TEST_UNIQUE_ID
+  ),
+  current_new_failing_tests AS (
+    SELECT
+      TEST_NAME AS "Test Name"
+      , PREVIOUS_STATUS
+    FROM joined_test_runs
+    WHERE (previous_status = 'pass' OR previous_status IS NULL)
+    ORDER BY 1
+  )
+  SELECT
+    "Test Name"
+  FROM current_new_failing_tests

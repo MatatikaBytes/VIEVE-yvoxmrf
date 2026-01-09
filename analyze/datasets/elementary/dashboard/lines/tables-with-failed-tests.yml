@@ -1,0 +1,44 @@
+# This file is managed by the 'app-elementary' file bundle and updated automatically when `meltano upgrade` is run.
+# To prevent any manual changes from being overwritten, remove the file bundle from `meltano.yml` or disable automatic updates:
+#     meltano config --plugin-type=files app-elementary set _update analyze/datasets/elementary/dashboard/lines/tables-with-failed-tests.yml false
+
+version: datasets/v0.2
+title: Tables with Failed Tests
+source: Test Results
+description: "#dashboard"
+metadata: |-
+  {
+    "label": "Test Failures", 
+    "related_table": {
+      "columns": [
+        {"name": "created_at_date", "label": "Date", "description": "Date"}
+      ],
+      "aggregates": [
+        {"name": "unique_tables", "label": "Tables", "description": "Tables"}
+      ]
+    }
+  }
+visualisation: |-
+  {"chartjs-chart": 
+    {"chartType": "line", 
+      "options": {
+        "scales": {
+          "y": {
+            "beginAtZero": true,
+            "ticks": {
+              "stepSize": 1
+            }
+          }
+        }
+      }
+    }
+  }
+query: |-
+  SELECT
+      DATE_TRUNC(DATE(created_at), DAY) AS created_at_date
+      , COUNT(DISTINCT TABLE_NAME) AS unique_tables
+  FROM matatika_test_results.elementary_test_results
+  WHERE DATE(created_at) >= DATE_SUB(CURRENT_DATE(), INTERVAL 6 DAY)
+  AND (status = 'fail' OR status = 'error')
+  GROUP BY created_at_date
+  ORDER BY created_at_date
