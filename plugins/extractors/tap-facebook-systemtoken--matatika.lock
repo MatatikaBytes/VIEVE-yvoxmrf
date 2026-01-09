@@ -74,6 +74,14 @@
       "hidden": false,
       "sensitive": false,
       "protected": false
+    },
+    {
+      "name": "stream_maps",
+      "kind": "object",
+      "description": "Config object for stream maps capability. For more information check out [Stream Maps](https://sdk.meltano.com/en/latest/stream_maps.html).",
+      "hidden": true,
+      "sensitive": false,
+      "protected": false
     }
   ]
 }

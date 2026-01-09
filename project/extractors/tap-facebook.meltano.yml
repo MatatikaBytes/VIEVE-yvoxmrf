@@ -3,8 +3,23 @@ plugins:
   - name: tap-facebook-systemtoken
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-facebook.git
+    config:
+      stream_maps:
+        ads:
+          updated_time: datetime.datetime.strptime(updated_time, "%Y-%m-%dT%H:%M:%S%z").isoformat()
+        adsets:
+          updated_time: datetime.datetime.strptime(updated_time, "%Y-%m-%dT%H:%M:%S%z").isoformat()
+        campaigns:
+          updated_time: datetime.datetime.strptime(updated_time, "%Y-%m-%dT%H:%M:%S%z").isoformat()
     select:
-      - adaccounts.*
-      - ads.*
-      - campaigns.*
-      
+    - adaccounts.*
+    - campaigns.*
+    - '!campaigns.*_time'
+    - campaigns.updated_time
+    - adsets.*
+    - '!adsets.*_time'
+    - adsets.updated_time
+    - ads.*
+    - '!ads.*_time'
+    - ads.updated_time
+
