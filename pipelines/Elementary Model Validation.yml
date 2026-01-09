@@ -1,0 +1,57 @@
+version: pipelines/v0.1
+name: Elementary Model Validation
+schedule: 0 0 12 * * *
+timeout: 1800
+max_retries: 0
+script: |-
+  export STORE_TEST_RESULTS=true
+
+  meltano install - dbt dbt-test-results matatika elementary notebook sendgrid
+
+  meltano invoke dbt deps
+
+  meltano invoke dbt run --select elementary
+
+  #  disable pipeline fail on non 0 exit code for dbt test
+  # save exit code
+  # re-enable pipeline fail on non 0 exit code
+  set +e
+  meltano invoke dbt test --store-failures
+  export dbt_test_exit_code=$?
+  set -e
+
+  meltano invoke dbt docs generate
+  meltano run dbt-test-results:convert
+
+  meltano invoke matatika publish output/
+
+  export ELEMENTARY_PROFILES_DIR=$PWD/transform/profile
+  export ELEMENTARY_FILE_PATH=$ELEMENTARY_PROFILES_DIR/elementary.html
+
+  meltano run elementary:monitor-report
+
+  curl -if -X PUT $ENDPOINT_URL/workspaces/$WORKSPACE_ID/resources/elementary.html \
+    -H "Authorization: Bearer $AUTH_TOKEN" \
+    -H "Content-Type: text/html" \
+    --data-binary @$ELEMENTARY_FILE_PATH
+
+  export CURRENT_DATE=$(date +"%B %d, %Y")
+  export DATE_SEVEN_DAYS_AGO=$(date -d "6 days ago" +"%B %d, %Y")
+
+  export SENDGRID_TITLE="$SENDGRID_TITLE: $DATE_SEVEN_DAYS_AGO - $CURRENT_DATE"
+
+  meltano run notebook:run sendgrid:send
+
+  exit $dbt_test_exit_code
+data_components:
+- dbt
+- dbt-test-results
+- matatika
+- elementary
+- notebook
+- sendgrid
+properties:
+  notebook.path: notebook/data_quality_report.ipynb
+  sendgrid.body: email_template.html
+  sendgrid.title: Daily Data Quality Report
+  sendgrid.content_type: text/html

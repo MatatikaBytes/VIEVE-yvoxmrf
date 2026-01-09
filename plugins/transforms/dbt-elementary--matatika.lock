@@ -1,0 +1,20 @@
+{
+  "plugin_type": "transforms",
+  "name": "dbt-elementary",
+  "namespace": "matatika_elementary",
+  "variant": "matatika",
+  "label": "dbt-elementary",
+  "repo": "https://github.com/Matatika/dbt-elementary.git",
+  "pip_url": "https://github.com/Matatika/dbt-elementary@v0.1.0",
+  "requires": {
+    "transformers": [
+      {
+        "name": "dbt",
+        "variant": "dbt-labs"
+      }
+    ]
+  },
+  "vars": {
+    "schema": "{{ env_var('DBT_SOURCE_SCHEMA') }}"
+  }
+}
