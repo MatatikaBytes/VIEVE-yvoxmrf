@@ -53,5 +53,5 @@ data_components:
 properties:
   notebook.path: notebook/data_quality_report.ipynb
   sendgrid.body: email_template.html
-  sendgrid.title: Daily Data Quality Report
+  sendgrid.title: VIEVE Daily Data Quality Report
   sendgrid.content_type: text/html
