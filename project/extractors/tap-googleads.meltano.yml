@@ -8,6 +8,7 @@ plugins:
     - campaign_history_unsegmented.*
     - adgroups.*
     - ad_group_ad.*
+    - ad_group_unsegmented.*
     - customer.*
     - label.*
     - keyword_view.*
