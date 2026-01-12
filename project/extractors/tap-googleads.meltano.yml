@@ -5,6 +5,7 @@ plugins:
     pip_url: git+https://github.com/Matatika/tap-googleads.git@v0.11.0
     select:
     - campaign_history.*
+    - campaign_history_unsegmented.*
     - adgroups.*
     - ad_group_ad.*
     - customer.*
@@ -17,8 +18,34 @@ plugins:
     - campaign_stats.*
     - ad_group_criterion.*
     config:
-      start_date: 2025-12-01
+      start_date: 2025-01-01
       custom_queries:
+      - name: "campaign_history_unsegmented"
+        query: >
+          SELECT 
+            campaign.resource_name,
+            campaign.id,
+            campaign.name,
+            customer.resource_name,
+            customer.id,
+            campaign.ad_serving_optimization_status,
+            campaign.advertising_channel_sub_type,
+            campaign.advertising_channel_type,
+            campaign.experiment_type,
+            campaign.end_date,
+            campaign.final_url_suffix,
+            campaign.frequency_caps,
+            campaign.optimization_score,
+            campaign.payment_mode,
+            campaign.serving_status,
+            campaign.start_date,
+            campaign.status,
+            campaign.tracking_url_template,
+            campaign.vanity_pharma.vanity_pharma_display_url_mode,
+            campaign.vanity_pharma.vanity_pharma_text,
+            campaign.video_brand_safety_suitability
+          FROM campaign
+        add_date_filter_to_query: false
       - name: "ad_group_stats"
         query: >
           SELECT
