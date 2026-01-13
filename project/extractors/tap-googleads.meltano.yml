@@ -98,11 +98,12 @@ plugins:
             metrics.conversions_value,
             metrics.all_conversions,
             metrics.all_conversions_value,
+            segments.ad_network_type,
             segments.date,
             segments.device
           FROM ad_group
         add_date_filter_to_query: true
-        primary_keys: ["adGroup__id","segments__date","segments__device"]
+        primary_keys: ["adGroup__id","segments__date","segments__device","segments__ad_network_type"]
         replication_key: "segments__date"
         replication_method: "INCREMENTAL"
       - name: "keyword_stats"
