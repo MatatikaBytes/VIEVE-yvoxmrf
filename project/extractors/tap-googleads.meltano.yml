@@ -140,5 +140,6 @@ plugins:
             metrics.conversions_value
           FROM campaign
         add_date_filter_to_query: true
+        primary_keys: ["campaign__id","segments__date","segments__device"]
         replication_key: "segments__date"
         replication_method: "INCREMENTAL"
