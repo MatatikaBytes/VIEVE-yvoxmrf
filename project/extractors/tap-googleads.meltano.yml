@@ -117,11 +117,13 @@ plugins:
             metrics.clicks,
             metrics.conversions,
             metrics.conversions_value,
+            metrics.interaction_event_types,
             ad_group.id,
-            ad_group_criterion.criterion_id
+            ad_group_criterion.criterion_id,
+            segments.ad_network_type
           FROM keyword_view
         add_date_filter_to_query: true
-        primary_keys: ["adGroup__id","campaign__id","customer__id","ad_group_criterion__criterion_id","segments__date","segments__device"]
+        primary_keys: ["adGroup__id","campaign__id","customer__id","ad_group_criterion__criterion_id","segments__date","segments__device","segments__ad_network_type"]
         replication_key: "segments__date"
         replication_method: "INCREMENTAL"
       - name: "campaign_stats"
