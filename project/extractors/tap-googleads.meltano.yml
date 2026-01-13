@@ -102,6 +102,7 @@ plugins:
             segments.device
           FROM ad_group
         add_date_filter_to_query: true
+        primary_keys: ["adGroup__id","segments__date","segments__device"]
         replication_key: "segments__date"
         replication_method: "INCREMENTAL"
       - name: "keyword_stats"
