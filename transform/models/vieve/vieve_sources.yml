@@ -3,10 +3,15 @@ version: 2
 sources:
   - name: google_ads
     database: vieve-data
-    schema: matatika_google_ads_raw
+    schema: matatika_google_ads
     description: Source tables from tap-google-ads
     tables:
       - name: adgroups
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
+      - name: ad_group_unsegmented
         tests:
           - elementary.volume_anomalies
           - elementary.freshness_anomalies:
@@ -22,6 +27,11 @@ sources:
           - elementary.freshness_anomalies:
               timestamp_column: _sdc_received_at
       - name: campaign_history
+        tests:
+          - elementary.volume_anomalies
+          - elementary.freshness_anomalies:
+              timestamp_column: _sdc_received_at
+      - name: campaign_history_unsegmented
         tests:
           - elementary.volume_anomalies
           - elementary.freshness_anomalies:

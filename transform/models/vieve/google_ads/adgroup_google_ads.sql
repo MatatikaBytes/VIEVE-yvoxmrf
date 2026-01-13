@@ -10,7 +10,7 @@ ASSUMPTION:
 {{ 
     config(
         materialized='table',
-        schema = 'matatika_google_ads_staging'  
+        schema = 'staging'  
     ) 
 }}
 
@@ -21,7 +21,7 @@ WITH campaign_name_table AS (
         , campaign__name as name
         , campaign__status as status
         , campaign__advertising_channel_type as ADVERTISING_CHANNEL_TYPE
-    FROM {{source('google_ads','campaign_history')}} history 
+    FROM {{ref('campaign_history_unified')}} history 
     -- campaign id should be unique but adding qualify statement to make sure
     qualify row_number() over (partition by campaign__id order by _sdc_extracted_at desc) = 1
 ),
@@ -30,7 +30,7 @@ adgroup_name_table AS (
     SELECT 
         ad_group__id as id
         , ad_group__name AS adgroup_name
-    FROM {{source('google_ads','adgroups')}} history 
+    FROM {{ref('ad_group_unified')}} history 
     -- adgroup id should be unique but adding qualify statement to make sure
     qualify row_number() over (partition by ad_group__id order by _sdc_extracted_at desc) = 1 
 

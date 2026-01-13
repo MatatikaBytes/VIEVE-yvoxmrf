@@ -9,7 +9,7 @@ ASSUMPTION:
 {{ 
     config(
         materialized='table',
-        schema = 'matatika_google_ads_staging'  
+        schema = 'staging'  
     ) 
 }}
 -- Getting the campaign name from the history name
@@ -26,14 +26,14 @@ qualify row_number() over (partition by campaign__id order by _sdc_extracted_at 
 )
 , keyword_name_table AS (
 SELECT
-    ad_group__id as id
+    ad_group_criterion__criterion_id as id
     , ad_group_criterion__keyword__text as keyword_text
     , ad_group_criterion__age_range__type as AGE_RANGE_TYPE
     , ad_group_criterion__gender__type as GENDER_TYPE
     , ad_group_criterion__income_range__type as INCOME_RANGE_TYPE
     , ad_group_criterion__keyword__match_type as KEYWORD_MATCH_TYPE
 FROM  {{source('google_ads','ad_group_criterion')}} history 
-qualify row_number() over (partition by ad_group__id order by _sdc_extracted_at desc) = 1
+qualify row_number() over (partition by ad_group_criterion__criterion_id order by _sdc_extracted_at desc) = 1
 )
 , adgroup_name_table AS (
     SELECT 
