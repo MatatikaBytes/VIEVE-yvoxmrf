@@ -11,7 +11,7 @@ ASSUMPTION:
 {{ 
     config(
         materialized='table',
-        schema = 'matatika_shopify_staging'  
+        schema = 'staging'  
     ) 
 }}
 

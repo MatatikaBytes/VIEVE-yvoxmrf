@@ -10,7 +10,7 @@ ASSUMPTION:
 {{ 
     config(
         materialized='table',
-        schema = 'matatika_shopify_marts'  
+        schema = 'marts'  
     ) 
 }}
 

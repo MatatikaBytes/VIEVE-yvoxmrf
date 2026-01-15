@@ -1,7 +1,7 @@
 {{ 
     config(
         materialized='table',
-        schema = 'matatika_facebook_ads_staging'  
+        schema = 'staging'  
     ) 
 }}
 

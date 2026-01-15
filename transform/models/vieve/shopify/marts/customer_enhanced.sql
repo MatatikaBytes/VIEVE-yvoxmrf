@@ -94,7 +94,7 @@ DATA QUALITY NOTES:
 {{ 
     config(
         materialized='table',
-        schema = 'matatika_shopify_marts'  
+        schema = 'marts'  
     ) 
 }}
 

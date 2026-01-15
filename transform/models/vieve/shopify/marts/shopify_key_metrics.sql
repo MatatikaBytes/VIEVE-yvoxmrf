@@ -14,7 +14,7 @@ ASSUMPTION:
 {{ 
     config(
         materialized='table',
-        schema = 'matatika_shopify_marts'  
+        schema = 'marts'  
     ) 
 }}
 -- using cleaned order table that handles exchanged orders

@@ -14,7 +14,7 @@ EXTRA NOTES
 {{ 
     config(
         materialized='table',
-        schema = 'matatika_shopify_staging'  
+        schema = 'staging'  
     ) 
 }}
 -- Grouping by refund id getting the order details
