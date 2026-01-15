@@ -18,7 +18,7 @@ ASSUMPTION:
 SELECT
 CAST(DATETIME(orders.created_at, "Europe/London") AS DATE) as order_date
 , orders.*
-, SAFE_CAST(JSON_EXTRACT_SCALAR(original_total_duties_set, '$.shop_money.amount') AS FLOAT64) AS duties
+, SAFE_CAST(original_total_duties_set__shop_money__amount AS FLOAT64) AS duties
 FROM {{source('shopify', 'orders')}} orders
 WHERE 
     test is false 
