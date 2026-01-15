@@ -12,3 +12,7 @@ plugins:
     - order_adjustments.*
     - products.*
     - tax_lines.*
+    schema:
+      line_items:
+        properties:
+          type: [string, "null"]
