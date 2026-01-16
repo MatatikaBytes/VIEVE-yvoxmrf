@@ -4,7 +4,7 @@ schedule: 0 0 0 * * *
 timeout: 3600
 max_retries: 2
 script: |-
-  meltano run --state-id-suffix "$PIPELINE_ID" tap-facebook-systemtoken target-bigquery
+  meltano run -f --state-id-suffix "$PIPELINE_ID" tap-facebook-systemtoken target-bigquery
   meltano invoke dbt deps
   meltano invoke dbt run --select vieve.facebook_ads.*
 data_components:
