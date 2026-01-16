@@ -1,3 +1,5 @@
 version: datastores/v0.1
 name: Google BigQuery
 data_plugin: loaders/target-bigquery--matatika
+properties:
+  location: EU

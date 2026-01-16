@@ -11,5 +11,3 @@ data_components:
 - tap-shopify
 - Google BigQuery
 - dbt
-properties:
-  Google BigQuery.location: EU
