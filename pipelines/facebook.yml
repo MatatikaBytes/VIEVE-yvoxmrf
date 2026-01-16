@@ -1,7 +1,7 @@
 version: pipelines/v0.1
 label: Facebook Ads
 schedule: 0 0 0 * * *
-timeout: 0
+timeout: 3600
 max_retries: 2
 script: |-
   meltano run --state-id-suffix "$PIPELINE_ID" tap-facebook-systemtoken target-bigquery
