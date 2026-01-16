@@ -5,7 +5,7 @@
   "variant": "matatika",
   "label": "BigQuery",
   "repo": "https://github.com/Matatika/tap-bigquery",
-  "pip_url": "git+https://github.com/Matatika/tap-bigquery.git@v0.3.0 google-api-core<2.28.0",
+  "pip_url": "git+https://github.com/Matatika/tap-bigquery.git@v0.3.0",
   "executable": "tap-bigquery",
   "description": "BigQuery data warehouse extractor",
   "logo_url": "/assets/logos/extractors/bigquery.png",
